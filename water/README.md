@@ -2,9 +2,12 @@ This tutorial was inspired by the "official" GROMACS water tutorial at:
 http://manual.gromacs.org/online/water.html
 However, I think this example is much more comprehensive, because it shows you how to construct a box of water molecules from scratch. Because topology files for water are included with GROMACS, no additional structure files (such as .pdb) are required for this tutorial. This tutorial also corrects outdated syntax that is found in the .mdp file from the "official" tutorial.
 
------ Simulation -----
-1. Generate a box:  
-`gmx editconf -f /usr/share/gromacs/top/spc216.gro -o empty_box.gro -bt dodecahedron -box 10`
+# Simulation  
+
+1. Generate a box: 
+```bash
+gmx editconf -f /usr/share/gromacs/top/spc216.gro -o empty_box.gro -bt dodecahedron -box 10
+```
 
 2. Fill box with solvent (water molecules):  
 `gmx solvate -cp empty_box.gro -cs /usr/share/gromacs/top/spc216.gro -o water.gro`
@@ -19,7 +22,8 @@ Try entering 15 for the force field (OPLS-AA/L) and 1 for the water model (TIP4P
 5. Run molecular dynamics simulation:  
 `mdrun -s run_water.tpr -o -x -deffnm md_water`
 
------ Analysis -----  
+# Analysis
+
 1. View in VMD (http://www.ks.uiuc.edu/Research/vmd/)
 a)Start VMD.
 b) Go to File->New Molecule.  Select "water.gro" from the dialog box.
