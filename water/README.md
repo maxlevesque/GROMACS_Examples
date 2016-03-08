@@ -2,6 +2,8 @@
 gmx editconf -f /usr/share/gromacs/top/spc216.gro -o empty_box.gro -bt cubic -box 2.5
 gmx solvate -cp empty_box.gro -cs /usr/share/gromacs/top/spc216.gro -o water.gro
 gmx pdb2gmx -f water.gro -o water.gro -p water.top -n water.ndx
+echo "integrator = steep" > water_MD.mdp
+echo "nsteps = 1000" >> water_MD.mdp
 grompp -v -f water_MD.mdp -c water.gro -p water.top -o run_water_em
 mdrun -s run_water.tpr -o -x -deffnm md_water
 ```
