@@ -4,20 +4,20 @@ However, I think this example is much more comprehensive, because it shows you h
 
 ----- Simulation -----
 1. Generate a box:
-editconf -f /usr/share/gromacs/top/spc216.gro -o empty_box.gro -bt dodecahedron -box 10
+`gmx editconf -f /usr/share/gromacs/top/spc216.gro -o empty_box.gro -bt dodecahedron -box 10`
 
 2. Fill box with solvent (water molecules):
-genbox -cp empty_box.gro -cs /usr/share/gromacs/top/spc216.gro -o water.gro
+`gmx solvate -cp empty_box.gro -cs /usr/share/gromacs/top/spc216.gro -o water.gro`
 
 3. Generate the topology and index files:
-pdb2gmx -f water.gro -o water.gro -p water.top -n water.ndx
+`gmx pdb2gmx -f water.gro -o water.gro -p water.top -n water.ndx`
 Try entering 14 for the force field (OPLS-AA/L) and 1 for the water model.
 
 4. Run pre-processor to set up MD run
-grompp -v -f water_MD.mdp -c water.gro -p water.top -o run_water
+`grompp -v -f water_MD.mdp -c water.gro -p water.top -o run_water`
 
 5. Run molecular dynamics simulation:
-mdrun -s run_water.tpr -o -x -deffnm md_water
+`mdrun -s run_water.tpr -o -x -deffnm md_water`
 
 ----- Analysis -----
 1. View in VMD (http://www.ks.uiuc.edu/Research/vmd/)
