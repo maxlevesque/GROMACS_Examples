@@ -11,7 +11,7 @@ However, I think this example is much more comprehensive, because it shows you h
 
 3. Generate the topology and index files:  
 `gmx pdb2gmx -f water.gro -o water.gro -p water.top -n water.ndx`  
-Try entering 14 for the force field (OPLS-AA/L) and 1 for the water model.
+Try entering 15 for the force field (OPLS-AA/L) and 1 for the water model (TIP4P).
 
 4. Run pre-processor to set up MD run    
 `grompp -v -f water_MD.mdp -c water.gro -p water.top -o run_water`
